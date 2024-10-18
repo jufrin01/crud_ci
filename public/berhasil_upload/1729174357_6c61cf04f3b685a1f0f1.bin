@@ -1,0 +1,113 @@
+# Langkah 1: Instalasi CodeIgniter 4
+
+1. Buka terminal atau command prompt
+2. Jalankan perintah berikut untuk menginstal CodeIgniter 4:
+   ```
+   composer create-project codeigniter4/appstarter CodeIgniter4
+   ```
+3. Setelah instalasi selesai, masuk ke direktori proyek:
+   ```
+   cd CodeIgniter4
+   ```
+
+# Langkah 2: Konfigurasi Database
+
+1. Buka file `app/Config/Database.php`
+2. Ubah pengaturan database sesuai dengan konfigurasi Anda, contoh:
+   ```php
+   public $default = [
+       'DSN'      => '',
+       'hostname' => 'localhost',
+       'username' => 'root',
+       'password' => '',
+       'database' => 'db_buku',
+       'DBDriver' => 'MySQLi',
+       // ...
+   ];
+   ```
+
+# Langkah 3: Membuat Model
+
+1. Buat file model baru di direktori `app/Models`, misalnya `BukuModel.php`
+2. Isi file model dengan kode berikut:
+   ```php
+   <?php
+   
+   namespace App\Models;
+   
+   use CodeIgniter\Model;
+   
+   class BukuModel extends Model
+   {
+       protected $table = 'buku';
+       protected $primaryKey = 'id';
+       protected $allowedFields = ['judul', 'penulis', 'penerbit', 'tahun_terbit'];
+   }
+   ```
+
+# Langkah 4: Membuat Controller
+
+1. Buat file controller baru di direktori `app/Controllers`, misalnya `BukuController.php`
+2. Isi file controller dengan kode berikut:
+   ```php
+   <?php
+   
+   namespace App\Controllers;
+   
+   use App\Models\BukuModel;
+   
+   class BukuController extends BaseController
+   {
+       protected $bukuModel;
+   
+       public function __construct()
+       {
+           $this->bukuModel = new BukuModel();
+       }
+   
+       public function index()
+       {
+           $data['buku'] = $this->bukuModel->findAll();
+           return view('buku/index', $data);
+       }
+   
+       // Tambahkan method untuk create, read, update, dan delete
+   }
+   ```
+
+# Langkah 5: Membuat View
+
+1. Buat folder baru di direktori `app/Views`, misalnya `buku`
+2. Buat file view baru di dalam folder tersebut, misalnya `index.php`
+3. Isi file view dengan kode HTML dan PHP untuk menampilkan data buku
+4. Tambahkan Bootstrap 5 CDN ke dalam file view:
+   ```html
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+   ```
+
+# Langkah 6: Konfigurasi Routes
+
+1. Buka file `app/Config/Routes.php`
+2. Tambahkan route untuk controller Buku, misalnya:
+   ```php
+   $routes->get('buku', 'BukuController::index');
+   $routes->get('buku/create', 'BukuController::create');
+   $routes->post('buku/store', 'BukuController::store');
+   $routes->get('buku/edit/(:num)', 'BukuController::edit/$1');
+   $routes->post('buku/update/(:num)', 'BukuController::update/$1');
+   $routes->get('buku/delete/(:num)', 'BukuController::delete/$1');
+   ```
+
+# Langkah 7: Menjalankan Aplikasi
+
+1. Jalankan server pengembangan dengan perintah berikut di terminal:
+   ```
+   php spark serve
+   ```
+2. Buka browser dan akses URL `http://localhost:8080/buku` untuk melihat aplikasi CRUD yang telah dibuat.
+
+Pastikan Anda telah menyesuaikan nama tabel, kolom, dan logika sesuai dengan kebutuhan aplikasi Anda.
+
+Selamat! Anda telah berhasil membuat aplikasi CRUD menggunakan CodeIgniter 4 dengan tampilan Bootstrap 5 CDN.
+
