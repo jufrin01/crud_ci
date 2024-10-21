@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.card {
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+.card-header {
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1.25rem;
+    padding: 1rem;
+    border-bottom: none;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-img-top {
+    height: 200px; /* Standardisasi tinggi gambar */
+    object-fit: cover;
+}
+
+.anime-list-item {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 400px; /* Sesuaikan nilai ini sesuai kebutuhan */
+}
+
+.card-title {
+    height: 2.5em; /* Sekitar 2 baris teks */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.anime-category {
+    height: 1.5em; /* 1 baris teks */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.btn-container {
+    margin-top: auto;
+}
+
+.btn-container .btn {
+    flex: 1 0 auto;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -0.5rem;
+}
+[class*="col-"] {
+    padding: 0.5rem;
+}
+.col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+@media (min-width: 576px) {
+    .col-sm-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    .card img {
+        height: 250px;
+    }
+}
+@media (min-width: 768px) {
+    .col-md-4 {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+}
+@media (min-width: 992px) {
+    .col-lg-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    .card img {
+        height: 300px;
+    }
+}
+.modal-dialog {
+    margin: 1rem;
+    max-width: 100%;
+}
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 500px;
+        margin: 1.75rem auto;
+    }
+}
+.modal-img {
+    width: 100%;
+    height: auto;
+}

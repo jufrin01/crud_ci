@@ -1,0 +1,47 @@
+/* AdminLTE-inspired styles */
+body {
+    background-color: #f4f6f9; /* Soft background */
+}
+
+.card {
+    border-radius: 0.25rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Box shadow for card */
+    border: none; /* Remove border for modern look */
+}
+
+.card-header {
+    background-color: #007bff; /* Primary AdminLTE color */
+    color: #fff;
+    font-size: 1.25rem;
+    padding: 1rem;
+    border-bottom: none; /* Clean header */
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.form-control {
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+}
+
+textarea.form-control {
+    resize: none; /* Prevent resizing */
+}

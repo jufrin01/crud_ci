@@ -45,7 +45,10 @@ class Admin extends BaseController
             $newFilename = $file->getRandomName();
             $file->move('uploads', $newFilename);
         } else {
-            return redirect()->back()->withInput()->with('error', 'Failed to upload file.');
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with('error', 'Failed to upload file.');
         }
 
         // Prepare data for insertion
@@ -60,7 +63,10 @@ class Admin extends BaseController
         if ($model->insert($data)) {
             return redirect()->to('/input')->with('success', 'Data successfully saved and file uploaded.');
         } else {
-            return redirect()->back()->withInput()->with('error', 'Failed to save data. Please try again.');
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with('error', 'Failed to save data. Please try again.');
         }
     }
 
@@ -80,7 +86,9 @@ class Admin extends BaseController
 
         if (empty($data['dataList'])) {
             // If no data is found, redirect to a different page or show an error message
-            return redirect()->to('/data')->with('error', 'Data not found.');
+            return redirect()
+                ->to('/data')
+                ->with('error', 'Data not found.');
         }
 
         // Load the edit view with the fetched data
@@ -121,12 +129,18 @@ class Admin extends BaseController
 
         if (!$validation) {
             // Jika validasi gagal, kembali ke halaman edit dengan pesan kesalahan
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with('errors', $this
+                    ->validator
+                    ->getErrors());
         }
 
         // Ambil data input dari form
         $data = [
-            'nama' => $this->request->getPost('nama'),
+            'nama' => $this
+                ->request->getPost('nama'),
             'mail' => $this->request->getPost('mail'),
             'alamat' => $this->request->getPost('alamat'),
         ];
@@ -136,10 +150,15 @@ class Admin extends BaseController
 
         if ($updated) {
             // Jika berhasil, redirect ke halaman data dengan pesan sukses
-            return redirect()->to('/data')->with('success', 'Data berhasil diperbarui.');
+            return redirect()
+                ->to('/data')
+                ->with('success', 'Data berhasil diperbarui.');
         } else {
             // Jika gagal, redirect kembali ke halaman edit dengan pesan error
-            return redirect()->back()->withInput()->with('error', 'Gagal memperbarui data.');
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with('error', 'Gagal memperbarui data.');
         }
     }
 
